@@ -12,7 +12,7 @@ import { Input } from "./ui/input";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const navigationMenuTriggerStyle = cn(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-thin transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 );
 
 export default function Navbar() {
@@ -72,8 +72,7 @@ export default function Navbar() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-center items-center">
             <Link to="/shop/home" className="flex items-center space-x-2">
-              <Smartphone className="h-8 w-8" />
-              <span className="text-2xl font-bold">JNP Mobile</span>
+              <span className="text-4xl font-bold">JNPMOBILENACCESSORIES</span>
             </Link>
           </div>
         </div>
@@ -85,6 +84,11 @@ export default function Navbar() {
           <NavigationMenu className="justify-center w-full">
             <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
+                <Link to="/shop/about" className={navigationMenuTriggerStyle}>
+                  About
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
                 <Link to="/shop/home" className={navigationMenuTriggerStyle}>
                   Home
                 </Link>
@@ -94,27 +98,7 @@ export default function Navbar() {
                   to="/shop/products"
                   className={navigationMenuTriggerStyle}
                 >
-                  Products
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/shop/groups" className={navigationMenuTriggerStyle}>
-                  Groups
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/shop/members" className={navigationMenuTriggerStyle}>
-                  Members
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/shop/events" className={navigationMenuTriggerStyle}>
-                  Events
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/shop/about" className={navigationMenuTriggerStyle}>
-                  About
+                  Shop
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -133,6 +117,29 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <Link to="/shop/support" className={navigationMenuTriggerStyle}>
                   Support
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/shop/groups" className={navigationMenuTriggerStyle}>
+                  Groups
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/shop/members" className={navigationMenuTriggerStyle}>
+                  Members
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/shop/events" className={navigationMenuTriggerStyle}>
+                  Events
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link
+                  to="/shop/program-list"
+                  className={navigationMenuTriggerStyle}
+                >
+                  Program List
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
