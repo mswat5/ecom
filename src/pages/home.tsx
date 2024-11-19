@@ -44,7 +44,7 @@ export default function Home() {
         ))}
       </div>
 
-      <section className="m-16">
+      <section className="m-8">
         {/* <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
           {featuredProducts.map((product) => (

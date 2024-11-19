@@ -17,7 +17,7 @@ export function ProductCard({ product }: ProductCardProps) {
             className="h-48 w-full object-cover"
           />
           <div className="p-4">
-            <h3 className="font-semibold">{product.name}</h3>
+            <h3 className="font-semibold text-sm">{product.name}</h3>
             <p className="text-sm text-muted-foreground">${product.price}</p>
           </div>
         </CardContent>

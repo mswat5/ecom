@@ -14,7 +14,7 @@ const Footer = () => {
           </a>
 
           <div className="text-sm text-gray-400 text-center mt-4">
-            ©2023 by jnpmobilenaccessories.
+            ©2024 by jnpmobilenaccessories.
           </div>
         </div>
       </div>
