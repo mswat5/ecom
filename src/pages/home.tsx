@@ -1,5 +1,3 @@
-import { products } from "@/lib/data";
-import { ProductCard } from "@/components/product-card";
 import banner1 from "../assets/banner1.webp";
 import banner2 from "../assets/banner2.png";
 import banner3 from "../assets/banner3.png";
@@ -24,7 +22,6 @@ const featureImageList = [
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const featuredProducts = products.slice(0, 3);
 
   useEffect(() => {
     const timer = setInterval(() => {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { CartSheet } from "./cart-sheet";
-import { Search, Smartphone, User } from "lucide-react";
+import { Search } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,

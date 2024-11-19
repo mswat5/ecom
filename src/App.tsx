@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import { CartProvider } from "./lib/cart-context";
 import Home from "./pages/home";
