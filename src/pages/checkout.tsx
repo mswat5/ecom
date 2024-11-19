@@ -55,53 +55,64 @@ export function CheckoutPage() {
   };
 
   return (
-    <div className="container max-w-4xl mx-auto py-8">
+    <div className="container mx-auto p-4 md:p-8">
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-8 lg:grid-cols-2">
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Order Summary</h2>
-          {state.items.map((item) => (
-            <div key={item.product.id} className="flex gap-4">
-              <img
-                src={item.product.image}
-                alt={item.product.name}
-                className="h-20 w-20 rounded-lg object-cover"
-              />
-              <div className="flex-1">
-                <h3 className="font-medium">{item.product.name}</h3>
-                <p className="text-sm text-muted-foreground">
-                  Quantity: {item.quantity}
-                </p>
-                <p className="font-medium">
-                  ${(item.product.price * item.quantity).toFixed(2)}
-                </p>
+          <div className="space-y-4">
+            {state.items.map((item) => (
+              <div
+                key={item.product.id}
+                className="flex gap-4 bg-card p-4 rounded-lg border"
+              >
+                <img
+                  src={item.product.image}
+                  alt={item.product.name}
+                  className="h-16 w-16 sm:h-20 sm:w-20 rounded-lg object-cover"
+                />
+                <div className="flex-1 min-w-0">
+                  {" "}
+                  {/* prevent text overflow */}
+                  <h3 className="font-medium truncate">{item.product.name}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Quantity: {item.quantity}
+                  </p>
+                  <p className="font-medium">
+                    ₹{(item.product.price * item.quantity).toFixed(2)}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
 
-          <Separator />
+          <Separator className="my-4" />
 
-          <div className="flex justify-between text-lg font-bold">
+          <div className="flex justify-between text-lg font-bold bg-muted p-4 rounded-lg">
             <span>Total:</span>
-            <span>${total.toFixed(2)}</span>
+            <span>₹{total.toFixed(2)}</span>
           </div>
         </div>
 
         <div className="space-y-6">
-          <h2 className="text-xl font-semibold">Payment Method</h2>
+          <div className="bg-card p-6 rounded-lg border">
+            <h2 className="text-xl font-semibold mb-6">Payment Method</h2>
 
-          <Button className="w-full" onClick={handlePayment}>
-            Pay ₹{total.toFixed(2)}
-          </Button>
+            <div className="space-y-4">
+              <Button className="w-full py-6 text-lg" onClick={handlePayment}>
+                Pay ₹{total.toFixed(2)}
+              </Button>
 
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={() => navigate(-1)}
-          >
-            Back to Cart
-          </Button>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => navigate(-1)}
+              >
+                Back to Cart
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

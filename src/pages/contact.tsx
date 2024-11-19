@@ -9,7 +9,7 @@ const ShoppingContact = () => {
       <section className="">
         <h2 className="text-4xl font-bold text-center mb-8">CONTACT US</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
           {/* Contact Information */}
           <div className="text-center space-y-4">
             <p className="text-gray-600">
