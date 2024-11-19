@@ -10,7 +10,7 @@ const Auth0ProviderWithNavigate = ({
 
   const domain = import.meta.env.VITE_AUTH0_DOMAIN;
   const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-  const redirectUri = "https://ecomJNP-mswat5s-projects.vercel.app/";
+  const redirectUri = "https://ecom-mswat5s-projects.vercel.app/";
 
   if (!domain || !clientId || !redirectUri) {
     console.error("unable to initialise auth", {
