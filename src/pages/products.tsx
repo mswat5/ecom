@@ -24,17 +24,19 @@ export default function Products() {
   return (
     <div className="flex gap-6 p-6">
       {/* Sidebar */}
-      <div className="w-64 shrink-0 space-y-6">
+      <div className="w-20 md:w-64 shrink-0 md:space-y-6 space-y-2">
         {/* Browse By Section */}
         <div>
-          <h3 className="font-semibold mb-3">Browse By Category</h3>
+          <h3 className="font-semibold mb-3 text-sm md:text-base">
+            Browse By Category
+          </h3>
           <div className="flex flex-col gap-2">
             {categories.map((category) => (
               <Button
                 key={category}
                 variant={selectedCategory === category ? "default" : "ghost"}
                 onClick={() => setSelectedCategory(category)}
-                className="justify-start"
+                className="md:justify-start text-xs font-thin md:font-semibold md:text-base"
               >
                 {category}
               </Button>
@@ -43,7 +45,7 @@ export default function Products() {
         </div>
 
         <div>
-          <h3 className="font-semibold mb-3">Filter By</h3>
+          <h3 className="font-semibold mb-3 text-sm md:text-base">Filter By</h3>
           <div className="space-y-4">
             <div>
               <label className="text-sm text-gray-600 block mb-2">

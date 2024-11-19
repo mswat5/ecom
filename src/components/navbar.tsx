@@ -48,7 +48,9 @@ export default function Navbar() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-center items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-4xl font-bold">JNPMOBILENACCESSORIES</span>
+              <span className="text-2xl md:text-4xl font-bold">
+                JNPMOBILENACCESSORIES
+              </span>
             </Link>
           </div>
         </div>

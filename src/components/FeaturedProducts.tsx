@@ -1,29 +1,45 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { featuredProducts } from "@/lib/data";
 import { ProductCard } from "@/components/product-card";
 
 export default function FeaturedProducts() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   // Create a duplicated array for smooth infinite loop
   const displayProducts = [
-    ...featuredProducts.slice(0, 6),
-    ...featuredProducts.slice(0, 6),
+    ...featuredProducts.slice(0, isMobile ? 3 : 6),
+    ...featuredProducts.slice(0, isMobile ? 3 : 6),
   ];
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % 6);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (isMobile ? 6 : 6));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 5 : prevIndex - 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? (isMobile ? 5 : 5) : prevIndex - 1
+    );
   };
 
   return (
     <section className="py-12 ">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
           Featured Products
         </h2>
         <div className="relative">
@@ -50,12 +66,16 @@ export default function FeaturedProducts() {
           <div className="overflow-hidden mx-4">
             <div
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 25}%)` }}
+              style={{
+                transform: `translateX(-${
+                  currentIndex * (isMobile ? 33.33 : 25)
+                }%)`,
+              }}
             >
               {displayProducts.map((product, index) => (
                 <div
                   key={`${product.id}-${index}`}
-                  className="w-1/4 flex-shrink-0 px-2"
+                  className={`w-${isMobile ? "1/3" : "1/4"} flex-shrink-0 px-2`}
                 >
                   <ProductCard product={product} />
                 </div>
@@ -85,15 +105,17 @@ export default function FeaturedProducts() {
 
           {/* Simple dots indicator */}
           <div className="flex justify-center mt-6 gap-2">
-            {[0, 1, 2, 3, 4, 5].map((index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 w-2 rounded-full ${
-                  currentIndex === index ? "bg-black" : "bg-gray-300"
-                }`}
-              />
-            ))}
+            {Array.from({ length: isMobile ? 6 : 6 }, (_, i) => i).map(
+              (index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 w-2 rounded-full ${
+                    currentIndex === index ? "bg-black" : "bg-gray-300"
+                  }`}
+                />
+              )
+            )}
           </div>
         </div>
       </div>
