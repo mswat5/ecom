@@ -97,13 +97,13 @@ export function CartSheet() {
             <span className="font-medium">${total.toFixed(2)}</span>
           </div>
           <div className="space-y-2">
-            <Button className="w-full" onClick={() => navigate("/shop/cart")}>
+            <Button className="w-full" onClick={() => navigate("/cart")}>
               View Cart
             </Button>
             <Button
               className="w-full"
               variant="outline"
-              onClick={() => navigate("/shop/checkout")}
+              onClick={() => navigate("/checkout")}
             >
               Checkout
             </Button>

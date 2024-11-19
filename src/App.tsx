@@ -22,8 +22,8 @@ function App() {
     <CartProvider>
       <div className="flex flex-col overflow-hidden bg-white">
         <Routes>
-          <Route path="/shop" element={<ShoppingLayout />}>
-            <Route path="home" element={<Home />} />
+          <Route path="/" element={<ShoppingLayout />}>
+            <Route index element={<Home />} />
             <Route path="products" element={<Products />} />
             <Route path="product/:id" element={<ProductDetail />} />
             <Route path="cart" element={<Cart />} />
@@ -38,7 +38,6 @@ function App() {
             <Route path="checkout" element={<CheckoutPage />} />
             <Route path="order-success" element={<OrderSuccessPage />} />
           </Route>
-          {/* <Route path="" element={<Navigate to="/shop/home" />} /> */}
         </Routes>
         <Toaster />
       </div>

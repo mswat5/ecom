@@ -12,9 +12,7 @@ export function OrderSuccessPage() {
       <p className="text-muted-foreground mb-8">
         Thank you for your purchase. Your order has been confirmed.
       </p>
-      <Button onClick={() => navigate("/shop/products")}>
-        Continue Shopping
-      </Button>
+      <Button onClick={() => navigate("/products")}>Continue Shopping</Button>
     </div>
   );
 }

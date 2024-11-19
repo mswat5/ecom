@@ -9,7 +9,7 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="overflow-hidden">
-      <Link to={`/shop/product/${product.id}`} className="w-full">
+      <Link to={`/product/${product.id}`} className="w-full">
         <CardContent className="p-0">
           <img
             src={product.image}

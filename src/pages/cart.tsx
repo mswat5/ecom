@@ -27,7 +27,7 @@ export default function Cart() {
           Add some items to your cart to get started.
         </p>
         <Button asChild>
-          <a href="/shop/products">Continue Shopping</a>
+          <a href="/products">Continue Shopping</a>
         </Button>
       </div>
     );
@@ -119,7 +119,7 @@ export default function Cart() {
         <Button variant="outline" onClick={clearCart}>
           Clear Cart
         </Button>
-        <Button size="lg" onClick={() => navigate("/shop/checkout")}>
+        <Button size="lg" onClick={() => navigate("/checkout")}>
           Proceed to Checkout
         </Button>
       </div>

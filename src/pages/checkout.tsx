@@ -16,7 +16,7 @@ export function CheckoutPage() {
 
   useEffect(() => {
     if (state.items.length === 0) {
-      navigate("/shop/products");
+      navigate("/products");
     }
   }, [state.items.length, navigate]);
 
@@ -39,7 +39,7 @@ export function CheckoutPage() {
       handler: function (response: any) {
         console.log("Payment successful", response);
         clearCart();
-        navigate("/shop/order-success");
+        navigate("/order-success");
       },
       prefill: {
         name: "Customer Name",

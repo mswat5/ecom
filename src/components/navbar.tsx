@@ -9,15 +9,12 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const navigationMenuTriggerStyle = cn(
   "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-thin transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 );
 
 export default function Navbar() {
-  const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
-
   return (
     <header className="border-b sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       {/* First Row - Login, Search, and Cart */}
@@ -25,32 +22,8 @@ export default function Navbar() {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div>
-                {isAuthenticated ? (
-                  <>
-                    <span>{user?.email}</span>
-                    <Button
-                      onClick={() => {
-                        logout({
-                          logoutParams: {
-                            returnTo: window.location.origin + "/shop/home",
-                          },
-                        });
-                      }}
-                    >
-                      Logout
-                    </Button>
-                  </>
-                ) : (
-                  <Button
-                    variant="ghost"
-                    className="font-bold hover:text-orange-500 hover:bg-white"
-                    onClick={async () => await loginWithRedirect()}
-                  >
-                    Log In
-                  </Button>
-                )}
-              </div>
+              <Button>Login</Button>
+
               <div className="hidden sm:flex items-center space-x-2">
                 <Input
                   type="search"
@@ -71,7 +44,7 @@ export default function Navbar() {
       <div className="">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-center items-center">
-            <Link to="/shop/home" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
               <span className="text-4xl font-bold">JNPMOBILENACCESSORIES</span>
             </Link>
           </div>
@@ -84,61 +57,55 @@ export default function Navbar() {
           <NavigationMenu className="justify-center w-full">
             <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
-                <Link to="/shop/about" className={navigationMenuTriggerStyle}>
+                <Link to="/about" className={navigationMenuTriggerStyle}>
                   About
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/shop/home" className={navigationMenuTriggerStyle}>
+                <Link to="/" className={navigationMenuTriggerStyle}>
                   Home
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link
-                  to="/shop/products"
-                  className={navigationMenuTriggerStyle}
-                >
+                <Link to="/products" className={navigationMenuTriggerStyle}>
                   Shop
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link
-                  to="/shop/store-policies"
+                  to="/store-policies"
                   className={navigationMenuTriggerStyle}
                 >
                   Store Policies
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/shop/contact" className={navigationMenuTriggerStyle}>
+                <Link to="/contact" className={navigationMenuTriggerStyle}>
                   Contact
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/shop/support" className={navigationMenuTriggerStyle}>
+                <Link to="/support" className={navigationMenuTriggerStyle}>
                   Support
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/shop/groups" className={navigationMenuTriggerStyle}>
+                <Link to="/groups" className={navigationMenuTriggerStyle}>
                   Groups
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/shop/members" className={navigationMenuTriggerStyle}>
+                <Link to="/members" className={navigationMenuTriggerStyle}>
                   Members
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/shop/events" className={navigationMenuTriggerStyle}>
+                <Link to="/events" className={navigationMenuTriggerStyle}>
                   Events
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link
-                  to="/shop/program-list"
-                  className={navigationMenuTriggerStyle}
-                >
+                <Link to="/program-list" className={navigationMenuTriggerStyle}>
                   Program List
                 </Link>
               </NavigationMenuItem>
