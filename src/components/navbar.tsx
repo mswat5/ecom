@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const navigationMenuTriggerStyle = cn(
   "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-thin transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
@@ -17,7 +18,7 @@ const navigationMenuTriggerStyle = cn(
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const { isAuthenticated, user, loginWithRedirect } = useAuth0();
   return (
     <header className="border-b sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       {/* First Row - Login, Search, and Cart */}
@@ -25,7 +26,19 @@ export default function Navbar() {
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button>Login</Button>
+              {isAuthenticated ? (
+                <>
+                  <span>Welcome, {user?.email}</span>
+                </>
+              ) : (
+                <Button
+                  variant="ghost"
+                  className="font-bold hover:text-orange-500 hover:bg-white"
+                  onClick={async () => await loginWithRedirect()}
+                >
+                  Log In
+                </Button>
+              )}
 
               <div className="hidden sm:flex items-center space-x-2">
                 <Input
