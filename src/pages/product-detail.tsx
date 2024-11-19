@@ -1,12 +1,12 @@
-import { useParams } from 'react-router-dom';
-import { products } from '@/lib/data';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
-import { useCart } from '@/lib/cart-context';
+import { useParams } from "react-router-dom";
+import { products } from "@/lib/data";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useCart } from "@/lib/cart-context";
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const product = products.find(p => p.id === id);
+  const product = products.find((p) => p.id === id);
   const { addItem } = useCart();
 
   if (!product) {
@@ -15,11 +15,11 @@ export default function ProductDetail() {
 
   const handleAddToCart = () => {
     addItem(product);
-    toast.success('Added to cart');
+    toast.success("Added to cart");
   };
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
+    <div className="grid md:grid-cols-2 gap-8 m-16">
       <div>
         <img
           src={product.image}
@@ -27,7 +27,7 @@ export default function ProductDetail() {
           className="w-full rounded-lg"
         />
       </div>
-      
+
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold">{product.name}</h1>

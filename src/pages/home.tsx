@@ -10,6 +10,7 @@ import banner7 from "../assets/banner7.png";
 import diwalipic from "../assets/diwalipic.png";
 import { useEffect, useState } from "react";
 import ContactPage from "@/components/contact-us";
+import FeaturedProducts from "@/components/FeaturedProducts";
 
 const featureImageList = [
   { id: 1, image: banner1 },
@@ -46,13 +47,14 @@ export default function Home() {
         ))}
       </div>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="m-16">
+        {/* <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </div>
+        </div> */}
+        <FeaturedProducts />
       </section>
       <div className="bg-black text-white py-16 text-center">
         <div className="container mx-auto px-4 max-w-4xl space-y-8">

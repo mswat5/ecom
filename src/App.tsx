@@ -13,6 +13,9 @@ import ShoppingSupport from "./pages/support";
 import ShoppingGroups from "./pages/groups";
 import ShoppingMembers from "./pages/members";
 import ShoppingEvents from "./pages/events";
+import ShoppingProgramList from "./pages/program-list";
+import { CheckoutPage } from "./pages/checkout";
+import { OrderSuccessPage } from "./pages/order-success";
 
 function App() {
   return (
@@ -31,6 +34,9 @@ function App() {
             <Route path="groups" element={<ShoppingGroups />} />
             <Route path="members" element={<ShoppingMembers />} />
             <Route path="events" element={<ShoppingEvents />} />
+            <Route path="program-list" element={<ShoppingProgramList />} />
+            <Route path="checkout" element={<CheckoutPage />} />
+            <Route path="order-success" element={<OrderSuccessPage />} />
           </Route>
           {/* <Route path="" element={<Navigate to="/shop/home" />} /> */}
         </Routes>

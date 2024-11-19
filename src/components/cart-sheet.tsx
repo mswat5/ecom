@@ -103,7 +103,7 @@ export function CartSheet() {
             <Button
               className="w-full"
               variant="outline"
-              onClick={() => navigate("/cart")}
+              onClick={() => navigate("/shop/checkout")}
             >
               Checkout
             </Button>

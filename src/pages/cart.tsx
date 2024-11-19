@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -6,31 +6,29 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { useCart } from '@/lib/cart-context';
-import { toast } from 'sonner';
-import { Minus, Plus, Trash2 } from 'lucide-react';
+} from "@/components/ui/table";
+import { useCart } from "@/lib/cart-context";
+import { toast } from "sonner";
+import { Minus, Plus, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const { state, updateQuantity, removeItem, clearCart } = useCart();
-
+  const navigate = useNavigate();
   const total = state.items.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
 
-  const handleCheckout = () => {
-    toast.success('Order placed successfully!');
-    clearCart();
-  };
-
   if (state.items.length === 0) {
     return (
       <div className="text-center py-12">
         <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
-        <p className="text-muted-foreground mb-8">Add some items to your cart to get started.</p>
+        <p className="text-muted-foreground mb-8">
+          Add some items to your cart to get started.
+        </p>
         <Button asChild>
-          <a href="/products">Continue Shopping</a>
+          <a href="/shop/products">Continue Shopping</a>
         </Button>
       </div>
     );
@@ -69,7 +67,12 @@ export default function Cart() {
                     variant="outline"
                     size="icon"
                     className="h-8 w-8"
-                    onClick={() => updateQuantity(item.product.id, Math.max(0, item.quantity - 1))}
+                    onClick={() =>
+                      updateQuantity(
+                        item.product.id,
+                        Math.max(0, item.quantity - 1)
+                      )
+                    }
                   >
                     <Minus className="h-4 w-4" />
                   </Button>
@@ -78,7 +81,9 @@ export default function Cart() {
                     variant="outline"
                     size="icon"
                     className="h-8 w-8"
-                    onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                    onClick={() =>
+                      updateQuantity(item.product.id, item.quantity + 1)
+                    }
                   >
                     <Plus className="h-4 w-4" />
                   </Button>
@@ -115,7 +120,7 @@ export default function Cart() {
         <Button variant="outline" onClick={clearCart}>
           Clear Cart
         </Button>
-        <Button size="lg" onClick={handleCheckout}>
+        <Button size="lg" onClick={() => navigate("/shop/checkout")}>
           Proceed to Checkout
         </Button>
       </div>

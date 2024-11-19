@@ -42,7 +42,6 @@ export default function Products() {
           </div>
         </div>
 
-        {/* Updated Filter Section with React Range */}
         <div>
           <h3 className="font-semibold mb-3">Filter By</h3>
           <div className="space-y-4">
