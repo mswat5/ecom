@@ -10,14 +10,15 @@ const Auth0ProviderWithNavigate = ({ children }: Props) => {
 
   const domain = import.meta.env.VITE_AUTH0_DOMAIN;
   const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
-  const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
+  const redirectUri = "https://ecom-two-lovat.vercel.app/";
 
   if (!domain || !clientId || !redirectUri) {
+    console.log(domain, clientId, redirectUri);
     throw new Error("unable to initialise auth");
   }
 
   const onRedirectCallback = (appState?: AppState) => {
-    navigate(appState?.returnTo || "/auth-callback");
+    navigate(appState?.returnTo || "/home");
   };
 
   return (

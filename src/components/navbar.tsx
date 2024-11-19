@@ -18,7 +18,7 @@ const navigationMenuTriggerStyle = cn(
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isAuthenticated, user, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   return (
     <header className="border-b sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       {/* First Row - Login, Search, and Cart */}
@@ -29,6 +29,9 @@ export default function Navbar() {
               {isAuthenticated ? (
                 <>
                   <span>Welcome, {user?.email}</span>
+                  <Button variant="outline" onClick={() => logout()}>
+                    Log Out
+                  </Button>
                 </>
               ) : (
                 <Button
